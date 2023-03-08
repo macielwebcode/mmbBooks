@@ -29,7 +29,7 @@ Projeto desenvolvido com react, styled-components e js, permitindo que o usuári
 
 
 ## Deploy da Aplicação
-- ``Link do projeto online:`` 
+- ``Link do projeto online:`` https://mmb-books.vercel.app/
 
  
 ## Learn More
