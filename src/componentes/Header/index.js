@@ -4,6 +4,7 @@ import OpcoesHeader from '../OpcoesHeader'
 import OpcoesIcones from '../OpcoesIcones'
 import './estilo.css'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const HeaderContainer = styled.header`
 
@@ -18,7 +19,10 @@ export default function Header() {
 
     <HeaderContainer>
 
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
+  
       <OpcoesHeader />
       <OpcoesIcones />
       

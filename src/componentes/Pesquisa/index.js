@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Input from '../Input'
 import { useState } from 'react'
-import { livros } from './dadosPesquisa'
-
+import { getLivros } from '../../services/livros'
+import { useEffect } from 'react' 
+import { postFavorito } from '../../services/favoritos'
 
 
 const PesquisaContainer = styled.section`
@@ -48,6 +49,22 @@ const Resultado = styled.div`
 export default function Pesquisa() {
 
   const [ livrosPesquisados, setLivrosPesquisados ] = useState([])
+  const [ livros, setLivros ] = useState([])
+
+  useEffect(() => {
+    fetchLivros()
+  }, [])
+
+
+  async function fetchLivros(){
+    const livrosApi = await getLivros()
+    setLivros(livrosApi)
+  }
+
+  async function insertFavorito(id) {
+      await postFavorito(id)
+      alert(`Livro de id:${id} inserido!`)
+  }
 
   return (
     <PesquisaContainer>
@@ -64,7 +81,7 @@ export default function Pesquisa() {
         />
 
         { livrosPesquisados.map( itemlivro => (
-          <Resultado>
+          <Resultado onClick={() => insertFavorito(itemlivro.id)} key={itemlivro.id}>
               <img src={itemlivro.src} alt="imagem do livro pesquisado"/>
               <p>{itemlivro.nome}</p>
           </Resultado>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom' 
 
 const Opcao = styled.li`
   font-size: 16px;
@@ -24,9 +25,8 @@ export default function OpcoesHeader() {
   return (
     <Opcoes>
       {textoOpcoes.map( (textoitem) => (
-          <Opcao key={textoitem}>
-            <p>{textoitem}</p>
-          </Opcao>
+        <Link to={`/${textoitem.toLowerCase()}`}><Opcao key={textoitem}><p>{textoitem}</p></Opcao></Link>
+          
       ))}
     </Opcoes>
   )
